@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    .container {
+      max-width: 60%;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>Matching Quiz</h1>
+  <p>Find your next love!</p>
+</div>
+  
+<div class="container">
+  <div class="row">
+    <!-- Insert quiz here -->
+    <form action="">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+    <div class="form-group">
+        <label for="picture">Picture:</label>
+        <input type="text" class="form-control" id="picture" required>
+    </div>
+    <div class="form-group">
+      <label>How much do you like the color green?</label>
+      <select class="form-control" class="chosen-selected" id="q1">
+        <option value="1">You totally hate it</option>
+        <option value="2">You don't like it</option>
+        <option value="3">Okay</option>
+        <option value="4">Above average</option>
+        <option value="5">You Love It</option>
+      </select>
+      <label>Do you like going to restaurants?</label>
+      <select class="form-control" id="q2">
+        <option value="1">You totally hate it</option>
+        <option value="2">You don't like it</option>
+        <option value="3">Okay</option>
+        <option value="4">Above average</option>
+        <option value="5">You Love It</option>
+      </select>
+      <label>Do you like drinking?</label>
+      <select class="form-control" id="q3">
+        <option value="1">You totally hate it</option>
+        <option value="2">You don't like it</option>
+        <option value="3">Okay</option>
+        <option value="4">Above average</option>
+        <option value="5">You Love It</option>
+      </select>
+      <label>Do you like going to bars?</label>
+      <select class="form-control" id="q4">
+        <option value="1">You totally hate it</option>
+        <option value="2">You don't like it</option>
+        <option value="3">Okay</option>
+        <option value="4">Above average</option>
+        <option value="5">You Love It</option>
+      </select>
+      <label>Do you like dogs?</label>
+      <select class="form-control" id="q5">
+        <option value="1">You totally hate it</option>
+        <option value="2">You don't like it</option>
+        <option value="3">Okay</option>
+        <option value="4">Above average</option>
+        <option value="5">You Love It</option>
+      </select>
+      <label>Are you a cat person?</label>
+      <select class="form-control" id="q6">
+        <option value="1">You totally hate it</option>
+        <option value="2">You don't like it</option>
+        <option value="3">Okay</option>
+        <option value="4">Above average</option>
+        <option value="5">You Love It</option>
+      </select>
+      <label>Are you home body?</label>
+      <select class="form-control" id="q7">
+        <option value="1">You totally hate it</option>
+        <option value="2">You don't like it</option>
+        <option value="3">Okay</option>
+        <option value="4">Above average</option>
+        <option value="5">You Love It</option>
+      </select>
+      <label>Do you like shopping?</label>
+      <select class="form-control" id="q8">
+        <option value="1">You totally hate it</option>
+        <option value="2">You don't like it</option>
+        <option value="3">Okay</option>
+        <option value="4">Above average</option>
+        <option value="5">You Love It</option>
+      </select>
+      <label>Do you like sleeping?</label>
+      <select class="form-control" id="q9">
+        <option value="1">You totally hate it</option>
+        <option value="2">You don't like it</option>
+        <option value="3">Okay</option>
+        <option value="4">Above average</option>
+        <option value="5">You Love It</option>
+      </select>
+      <label>Do you like surfing the internet?</label>
+      <select class="form-control" id="q10">
+        <option value="1">You totally hate it</option>
+        <option value="2">You don't like it</option>
+        <option value="3">Okay</option>
+        <option value="4">Above average</option>
+        <option value="5">You Love It</option>
+      </select>
+      <!-- end form-group -->
+      </div>
+      <br>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="submit">Submit</button>
+    </form>
+    </div>
+</div>
+
+<!-- footer -->
+
+<footer class="footer">
+        <div class="container">
+            <br>
+            <p><a href="/api/friends">API Friends List</a></p>
+        </div>
+</footer>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Your Match is: <span id="lover">Kakashi-kun</span></h4>
+      </div>
+      <div class="modal-body">
+        <img id="loverImg" src="https://pbs.twimg.com/profile_images/621921614377058304/ailqyj6j.jpg" alt="">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+  <script>
+    $("#submit").on("click", function(){
+
+      // Create an object for the user's data
+        var userData = {
+          name: $("#name").val(),
+          photo: $("#picture").val(),
+          scores: [ parseInt($("#q1").val()), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(), ]
+        }
+        console.log(userData);
+
+        // Grab the URL of the website
+        var currentURL = window.location.origin;
+
+        // AJAX post the data to the friends API.
+        if($("#name").val() == "" && $("#picture").val() == "") {
+          alert("Please enter something in the name and picture field");
+        } else {
+          $.post(currentURL + "/api/friends", userData, function(data){
+              // clear input fields
+              $("#name").val("");
+              $("#picture").val("");
+          });
+        }
+        
+
+        $.get(currentURL + "/api/match", function(data){
+              console.log(data);
+              $("#lover").text(data.name);
+              $('#loverImg').attr("src", data.photo);
+              
+              // Show the modal with the best match 
+              $("#myModal").modal('toggle');
+
+
+        })
+      
+      return false;
+    });
+  </script>
+</body>
+</html>
+
